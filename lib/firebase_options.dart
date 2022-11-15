@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     // ignore: missing_enum_constant_in_switch
     switch (defaultTargetPlatform) {
@@ -26,22 +29,16 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
     }
 
     throw UnsupportedError(
       'DefaultFirebaseOptions are not supported for this platform.',
     );
   }
-
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDKCdQqKEKHsIScqHt3k3Gz-x7eKT-dUus',
-    appId: '1:174806290373:web:db28f01f779eb2e7ad45ac',
-    messagingSenderId: '174806290373',
-    projectId: 'best-movies1',
-    authDomain: 'best-movies1.firebaseapp.com',
-    storageBucket: 'best-movies1.appspot.com',
-  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDRb75VN0ge2iEuSVM0xojJ89gHSc2zMU8',
@@ -52,16 +49,6 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC0kqDAe9bblwSlSkhaOnEUwzO3YIit3dQ',
-    appId: '1:174806290373:ios:ed2ee54e07094ba4ad45ac',
-    messagingSenderId: '174806290373',
-    projectId: 'best-movies1',
-    storageBucket: 'best-movies1.appspot.com',
-    iosClientId: '174806290373-qqrp1k6svta12t9s8d2refqu4i59t9er.apps.googleusercontent.com',
-    iosBundleId: 'com.krzysztofwozniak.bestMovies',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyC0kqDAe9bblwSlSkhaOnEUwzO3YIit3dQ',
     appId: '1:174806290373:ios:ed2ee54e07094ba4ad45ac',
     messagingSenderId: '174806290373',
