@@ -16,10 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.green,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Best Movies'),
         ),
-        home: const Scaffold());
+      ),
+    );
   }
 }
