@@ -38,23 +38,48 @@ class RootPage extends StatelessWidget {
         builder: (context, snapshot) {
           final user = snapshot.data;
           if (user == null) {
-            return const Scaffold(
-              body: Center(
-                child: Text('Jesteś niezalogowany'),
-              ),
-            );
+            return const HomePage();
           }
 
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Best Movies'),
-            ),
-            body: Center(
-              child: Text(
-                'Jesteś zalogowany jako ${user.email}',
-              ),
-            ),
-          );
+          return LoginPage(user: user);
         });
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('Jesteś niezalogowany'),
+      ),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Best Movies'),
+      ),
+      body: Center(
+        child: Text(
+          'Jesteś zalogowany jako ${user.email}',
+        ),
+      ),
+    );
   }
 }
