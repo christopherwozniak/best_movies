@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -29,16 +30,30 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextField(
                 controller: emailController,
+                decoration: const InputDecoration(hintText: 'Write your email'),
               ),
               const SizedBox(
                 height: 20,
               ),
-              TextField(controller: passwordController, obscureText: true),
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration:
+                    const InputDecoration(hintText: 'Write your password'),
+              ),
               const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  try {
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: emailController.text,
+                        password: passwordController.text);
+                  } catch (error) {
+                    print(error);
+                  }
+                },
                 child: const Text('Zaloguj się'),
               ),
             ],
