@@ -15,10 +15,24 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Best Movies'),
       ),
-      body: Center(
-        child: Text(
-          'Jesteś zalogowany jako ${user.email}',
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              'Jesteś zalogowany jako ${user.email}',
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+            child: const Text('Log out'),
+          ),
+        ],
       ),
     );
   }
