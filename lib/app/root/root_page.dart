@@ -1,5 +1,5 @@
-import 'package:best_movies/app/home/home_page.dart';
-import 'package:best_movies/app/login/login_page.dart';
+import 'package:best_movies/app/home/login_page.dart';
+import 'package:best_movies/app/login/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +15,10 @@ class RootPage extends StatelessWidget {
         builder: (context, snapshot) {
           final user = snapshot.data;
           if (user == null) {
-            return const HomePage();
+            return const LoginPage();
           }
 
-          return LoginPage(user: user);
+          return HomePage(user: user);
         });
   }
 }
