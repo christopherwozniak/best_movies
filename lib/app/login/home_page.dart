@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           return const AddOpinionPageContent();
         }
 
-        return MyAccountPageContent(widget: widget);
+        return MyAccountPageContent(email: widget.user.email);
       }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
@@ -54,10 +55,10 @@ class _HomePageState extends State<HomePage> {
 class MyAccountPageContent extends StatelessWidget {
   const MyAccountPageContent({
     Key? key,
-    required this.widget,
+    required this.email,
   }) : super(key: key);
 
-  final HomePage widget;
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class MyAccountPageContent extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            'Jesteś zalogowany jako ${widget.user.email}',
+            'Jesteś zalogowany jako $email',
           ),
         ),
         const SizedBox(
@@ -90,9 +91,13 @@ class AddOpinionPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Dwa'),
-    );
+    return StreamBuilder<Object>(
+        stream: FirebaseFirestore.instance.collection('movies').snapshots(),
+        builder: (context, snapshot) {
+          return const Center(
+            child: Text('Dwa'),
+          );
+        });
   }
 }
 
@@ -103,8 +108,18 @@ class MoviesPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Jeden'),
-    );
+    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('movies').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text('Something go wrong');
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Text('Loading');
+          }
+          return const Center(
+            child: Text('Jeden'),
+          );
+        });
   }
 }
