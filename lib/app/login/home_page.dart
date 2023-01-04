@@ -112,10 +112,10 @@ class MoviesPageContent extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('movies').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something go wrong');
+            return const Center(child: Text('Something go wrong'));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('Loading');
+            return const Center(child: Text('Loading'));
           }
           return const Center(
             child: Text('Jeden'),
