@@ -34,6 +34,15 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Opinions'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark_add), label: 'Add new opinion'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.mosque), label: 'My account'),
+        ],
+      ),
     );
   }
 }
