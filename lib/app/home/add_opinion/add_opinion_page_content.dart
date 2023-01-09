@@ -18,6 +18,7 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
 
   var movieName= '';
   var actorName= '';
+  var rating = 3.0;
   @override
   Widget build(BuildContext context) {
     {
@@ -39,11 +40,20 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
                   });
 
                  }),const SizedBox(height: 20,),
+                 Slider(onChanged: (newValue) {
+                  setState(() {
+                    rating= newValue;
+                  });
+                 }, value: rating,
+                 min: 0.0,
+                 max: 10.0,
+                 divisions: 10,
+                 label: rating.toString(),),
                  ElevatedButton(onPressed: () {
                   FirebaseFirestore.instance.collection('movies',).add({
                     'name':movieName,
                     'actor':actorName,
-                    'rating': 3.0,
+                    'rating': rating,
 
                   });
                  }, child: const Text('Add opinion'),),
