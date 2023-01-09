@@ -5,5 +5,8 @@ import 'package:meta/meta.dart';
 part 'movies_state.dart';
 
 class MoviesCubit extends Cubit<MoviesState> {
-  MoviesCubit() : super( MoviesState (documents: const [],),);
+  MoviesCubit() : super( const MoviesState (
+  documents:  [],
+  errorMessage: '',
+  isLoading: false),);
 }
