@@ -6,7 +6,10 @@ part of 'movies_cubit.dart';
   final bool isLoading;
   final String errorMessage;
 
-   const MoviesState ({required this.documents, required this.isLoading, required this.errorMessage,
+   const MoviesState ({
+   required this.documents, 
+   required this.isLoading, 
+   required this.errorMessage,
  });}
 
 

@@ -14,8 +14,43 @@ class MoviesPageContent extends StatelessWidget {
       create: (context) => MoviesCubit(),
       child: BlocBuilder<MoviesCubit, MoviesState>(
         builder: (context, state) {
-               state.documents;
 
+          if (state.errorMessage.isNotEmpty) {
+                  return  Center(child: Text('Something go wrong: ${state.errorMessage}'),);
+                }
+                if (state.isLoading) {
+                  return const Center(child: Text('Loading'));
+                }
+
+                final documents = state.documents;
+
+                return ListView(
+                  children: [
+                    for (final document in documents) ...[
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(document['name']),
+                                Text(document['actor']),
+                              ],
+                            ),
+                            Text(
+                              document['rating'].toString(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ],
+                );
+             
+
+               
 
 
 
