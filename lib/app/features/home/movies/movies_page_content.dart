@@ -19,7 +19,7 @@ class MoviesPageContent extends StatelessWidget {
                 }
                 if (state.isLoading) {
                   return const Center(child: CircularProgressIndicator(),);
-                }
+        }   
 
                 final documents = state.documents;
 
