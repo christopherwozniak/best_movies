@@ -11,4 +11,13 @@ class MoviesCubit extends Cubit<MoviesState> {
   documents:  [],
   errorMessage: '',
   isLoading: false),);
+
+  
+
+  Future<void> start () async {
+    emit(const MoviesState (
+  documents:  [],
+  errorMessage: '',
+  isLoading: false),);
+  }
 }

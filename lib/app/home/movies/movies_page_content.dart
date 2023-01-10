@@ -11,7 +11,7 @@ class MoviesPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MoviesCubit(),
+      create: (context) => MoviesCubit()..start(),
       child: BlocBuilder<MoviesCubit, MoviesState>(
         builder: (context, state) {
 
