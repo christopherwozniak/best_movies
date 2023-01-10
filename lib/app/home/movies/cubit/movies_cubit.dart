@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
@@ -12,6 +14,8 @@ class MoviesCubit extends Cubit<MoviesState> {
   errorMessage: '',
   isLoading: false),);
 
+
+ StreamSubscription? _streamSubscription;
   
 
   Future<void> start () async {
@@ -20,7 +24,7 @@ class MoviesCubit extends Cubit<MoviesState> {
   errorMessage: '',
   isLoading: false),);
 
-  FirebaseFirestore.instance
+  _streamSubscription= FirebaseFirestore.instance
                   .collection('movies')
                   .orderBy(
                     'rating',
@@ -28,7 +32,7 @@ class MoviesCubit extends Cubit<MoviesState> {
                   )
                   .snapshots().listen((data) {
                     emit(MoviesState(documents: data.docs, isLoading: false, errorMessage: '',),);
-                   }).onError((error){
+                   })..onError((error){
 
 
                     emit(MoviesState(documents:  const [], isLoading: false, errorMessage: error.toString(),),);
@@ -36,5 +40,10 @@ class MoviesCubit extends Cubit<MoviesState> {
                    });
 
 
+  }
+  @override
+  Future<void> close() {
+   _streamSubscription?.cancel();
+    return super.close();
   }
 }
