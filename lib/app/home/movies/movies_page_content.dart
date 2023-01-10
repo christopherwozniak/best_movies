@@ -19,7 +19,7 @@ class MoviesPageContent extends StatelessWidget {
                   return  Center(child: Text('Something go wrong: ${state.errorMessage}'),);
                 }
                 if (state.isLoading) {
-                  return const Center(child: Text('Loading'));
+                  return const Center(child: CircularProgressIndicator(),);
                 }
 
                 final documents = state.documents;
