@@ -19,5 +19,17 @@ class MoviesCubit extends Cubit<MoviesState> {
   documents:  [],
   errorMessage: '',
   isLoading: false),);
+
+  FirebaseFirestore.instance
+                  .collection('movies')
+                  .orderBy(
+                    'rating',
+                    descending: true,
+                  )
+                  .snapshots().listen((data) {
+                    emit(MoviesState(documents: data.docs, isLoading: false, errorMessage: '',),);
+                   });
+
+
   }
 }
