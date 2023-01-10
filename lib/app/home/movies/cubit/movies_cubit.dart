@@ -28,6 +28,11 @@ class MoviesCubit extends Cubit<MoviesState> {
                   )
                   .snapshots().listen((data) {
                     emit(MoviesState(documents: data.docs, isLoading: false, errorMessage: '',),);
+                   }).onError((error){
+
+
+                    emit(MoviesState(documents:  const [], isLoading: false, errorMessage: error.toString(),),);
+
                    });
 
 
