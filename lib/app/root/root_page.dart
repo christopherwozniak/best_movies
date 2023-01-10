@@ -1,5 +1,5 @@
-import 'package:best_movies/app/home/login_page.dart';
-import 'package:best_movies/app/login/home_page.dart';
+import 'package:best_movies/app/features/home/login_page.dart';
+import 'package:best_movies/app/features/login/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,6 @@
-import 'package:best_movies/app/home/add_opinion/add_opinion_page_content.dart';
-import 'package:best_movies/app/home/movies/movies_page_content.dart';
-import 'package:best_movies/app/home/my_account/my_account_page_content.dart';
+import 'package:best_movies/app/features/home/add_opinion/add_opinion_page_content.dart';
+import 'package:best_movies/app/features/home/movies/movies_page_content.dart';
+import 'package:best_movies/app/features/home/my_account/my_account_page_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

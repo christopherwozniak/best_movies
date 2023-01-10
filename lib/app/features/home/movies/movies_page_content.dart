@@ -1,4 +1,4 @@
-import 'package:best_movies/app/home/movies/cubit/movies_cubit.dart';
+import 'package:best_movies/app/features/home/movies/cubit/movies_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
