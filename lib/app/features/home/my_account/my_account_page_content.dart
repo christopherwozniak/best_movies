@@ -16,25 +16,26 @@ class MyAccountPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Center (child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(
-          child: Text(
+        
+           Text(
             'Jesteś zalogowany jako $email',
           ),
-        ),
+        
         const SizedBox(
           height: 20.0,
         ),
         ElevatedButton(
           onPressed: () {
-            context.read<RootCubit>().signOut;
+            context.read<RootCubit>().signOut();
+            
             
           },
           child: const Text('Log out'),
         ),
       ],
-    );
+    ),);
   }
 }

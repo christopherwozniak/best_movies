@@ -13,7 +13,7 @@ class RootCubit extends Cubit<RootState> {
 
   StreamSubscription? _streamSubscription;
 
-  Future<void> signOut () async {
+  Future<void> signOut() async {
      FirebaseAuth.instance.signOut();
   }
 
